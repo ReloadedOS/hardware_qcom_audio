@@ -79,9 +79,9 @@ ifneq ($(BOARD_OPENSOURCE_DIR), )
   PRIMARYHAL_PATH += $(BOARD_OPENSOURCE_DIR)/audio-hal/primary-hal
 else
   #Audio Specific device overlays
-  DEVICE_PACKAGE_OVERLAYS += vendor/qcom/opensource/audio-hal/primary-hal/configs/common/overlay
+  DEVICE_PACKAGE_OVERLAYS += $(call project-path-for,qcom-audio)/configs/common/overlay
   #AudioHal-primaryHal path
-  PRIMARYHAL_PATH += vendor/qcom/opensource/audio-hal/primary-hal
+  PRIMARYHAL_PATH += $(call project-path-for,qcom-audio)
 endif # BOARD_OPENSOURCE_DIR
 
 ifeq ($(TARGET_SUPPORTS_WEARABLES),true)
@@ -170,7 +170,7 @@ ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
    else
       PRODUCT_COPY_FILES += \
       $(TOPDIR)$(PRIMARYHAL_PATH)/configs/msm8937/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml \
-      $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/msm8937/audio_policy_configuration_common.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
+      $(TOPDIR)$(call project-path-for,qcom-audio)/configs/msm8937/audio_policy_configuration_common.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
    endif
 PRODUCT_COPY_FILES += \
     $(TOPDIR)$(PRIMARYHAL_PATH)/configs/common/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
