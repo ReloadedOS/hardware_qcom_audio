@@ -7,7 +7,7 @@ AUDIO_USE_STUB_HAL := true
 endif
 endif
 
-AUDIO_HAL_DIR := hardware/qcom-caf/sm8350/audio
+AUDIO_HAL_DIR := hardware/qcom/sm8350/audio
 
 #mixer xml generation
 BASE_PATH := $(AUDIO_HAL_DIR)/configs/common/base
