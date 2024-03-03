@@ -129,30 +129,30 @@ endif
 
 ifneq ($(strip $(TARGET_USES_RRO)), true)
 #Audio Specific device overlays
-DEVICE_PACKAGE_OVERLAYS += vendor/qcom/opensource/audio-hal/primary-hal/configs/common/overlay
+DEVICE_PACKAGE_OVERLAYS += $(call project-path-for,qcom-audio)/configs/common/overlay
 endif
 
 #Automotive audio specific device overlays
-DEVICE_PACKAGE_OVERLAYS += vendor/qcom/opensource/audio-hal/primary-hal/configs/common_au/overlay
+DEVICE_PACKAGE_OVERLAYS += $(call project-path-for,qcom-audio)/configs/common_au/overlay
 
 ifneq ( ,$(filter U UpsideDownCake 14, $(PLATFORM_VERSION)))
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/audio_effects_64.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
+    $(TOPDIR)$(call project-path-for,qcom-audio)/configs/msmsteppe_au/audio_effects_64.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
 else
 PRODUCT_COPY_FILES += \
-    $((TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
+    $((TOPDIR)$(call project-path-for,qcom-audio)/configs/msmsteppe_au/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
 endif
 
 PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/mixer_paths_adp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_adp.xml \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/mixer_paths_custom.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_custom.xml \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/mixer_paths_adp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_adp.xml \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/mixer_paths_custom.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_custom.xml \
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml
 
@@ -160,20 +160,20 @@ PRODUCT_COPY_FILES += \
 ifneq ($(TARGET_USES_AOSP_FOR_AUDIO), true)
 ifneq ( ,$(filter U UpsideDownCake 14, $(PLATFORM_VERSION)))
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml
+    $(TOPDIR)$(call project-path-for,qcom-audio)/configs/msmsteppe_au/audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml
 else
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml
+    $(TOPDIR)$(call project-path-for,qcom-audio)/configs/msmsteppe_au/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml
 endif
 endif
 
 ifneq ( ,$(filter U UpsideDownCake 14, $(PLATFORM_VERSION)))
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/common_au/audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(TOPDIR)$(call project-path-for,qcom-audio)/configs/common_au/audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml
 else
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/common_au/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(TOPDIR)$(call project-path-for,qcom-audio)/configs/common_au/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml
 endif
 PRODUCT_COPY_FILES += \
@@ -181,12 +181,12 @@ PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
-    $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/common/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_qti_audio_policy_configuration.xml \
-    $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/common_au/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml
+    $(TOPDIR)$(call project-path-for,qcom-audio)/configs/common/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_qti_audio_policy_configuration.xml \
+    $(TOPDIR)$(call project-path-for,qcom-audio)/configs/common_au/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml
 
 # Listen configuration file
 PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/audio-hal/primary-hal/configs/msmsteppe_au/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml
+    $(call project-path-for,qcom-audio)/configs/msmsteppe_au/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml
 
 #Audio HAL version
 PRODUCT_PROPERTY_OVERRIDES += \
